@@ -29,7 +29,7 @@ public class FixedTerminationEvent extends RepetitiveEvent {
      * @param terminationInclusive the date when this event ends
      */
 
-    public FixedTerminationEvent(LocalDate terminationInclusive, String title, LocalDateTime start, Duration duration, ChronoUnit frequency) {
+    public FixedTerminationEvent(String title, LocalDateTime start, Duration duration, ChronoUnit frequency, LocalDate terminationInclusive) {
         super(title, start, duration, frequency);
         this.dateFin = terminationInclusive;
         this.occurences = calculOccurrences();
