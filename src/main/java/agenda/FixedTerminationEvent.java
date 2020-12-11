@@ -29,10 +29,10 @@ public class FixedTerminationEvent extends RepetitiveEvent {
      * @param terminationInclusive the date when this event ends
      */
 
-    public FixedTerminationEvent(LocalDate dateFin, long occurences, String title, LocalDateTime start, Duration duration, ChronoUnit frequency) {
+    public FixedTerminationEvent(LocalDate terminationInclusive, String title, LocalDateTime start, Duration duration, ChronoUnit frequency) {
         super(title, start, duration, frequency);
-        this.dateFin = dateFin;
-        this.occurences = occurences;
+        this.dateFin = terminationInclusive;
+        this.occurences = calculOccurrences();
     }
 
     /**
@@ -51,8 +51,8 @@ public class FixedTerminationEvent extends RepetitiveEvent {
      */
     public FixedTerminationEvent(String title, LocalDateTime start, Duration duration, ChronoUnit frequency, long numberOfOccurrences) {
         super(title, start, duration, frequency);
-        // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        this.dateFin = calculDateFin() ;
+        this.occurences = numberOfOccurrences;
     }
 
     /**
