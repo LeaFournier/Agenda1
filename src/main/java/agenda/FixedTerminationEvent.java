@@ -80,7 +80,7 @@ public class FixedTerminationEvent extends RepetitiveEvent {
         }
     }
     
-    public long calculOccurences(){
+    public long calculOccurrences(){
         return this.getStart().toLocalDate().until(dateFin, frequency) + 1;
     }
     
