@@ -60,13 +60,33 @@ public class FixedTerminationEvent extends RepetitiveEvent {
      * @return the termination date of this repetitive event
      */
     public LocalDate getTerminationDate() {
-        // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");   
+        return dateFin;  
     }
 
     public long getNumberOfOccurrences() {
-        // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        return occurences;
+    }
+    
+    private LocalDate calculDateFin() {
+        switch (this.frequency) {
+            case DAYS:
+                return this.getStart().plus(this.getNumberOfOccurrences() - 1, ChronoUnit.DAYS).toLocalDate();
+            case WEEKS:
+                return this.getStart().plus(this.getNumberOfOccurrences() - 1, ChronoUnit.WEEKS).toLocalDate();
+            case MONTHS:
+                return this.getStart().plus(this.getNumberOfOccurrences() - 1, ChronoUnit.MONTHS).toLocalDate();
+            default:
+                return this.getStart().toLocalDate();
+        }
+    }
+    
+    public long calculOccurences(){
+        return this.getStart().toLocalDate().until(dateFin, frequency) + 1;
+    }
+    
+    @Override
+    public String toString() {
+        return "Titre: " + this.getTitle() + " Durée : " + this.getDuration() + " Fréquence: " + this.getFrequency() + " Nb occurences : " + this.getNumberOfOccurrences() + " Date fin : " + this.getTerminationDate();
     }
         
 }
