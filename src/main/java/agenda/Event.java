@@ -66,6 +66,9 @@ public class Event {
         return myDuration;
     }
 
-   
+   //ToString   
+    public String toString() {
+        return this.getTitle() + "Début: " + this.getStart() + "Durée: " + this.getDuration() ;
+    }
     
 }
