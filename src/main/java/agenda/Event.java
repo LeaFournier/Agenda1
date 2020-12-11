@@ -74,7 +74,7 @@ public class Event {
 
    //ToString   
     public String toString() {
-        return this.getTitle() + "Début: " + this.getStart() + "Durée: " + this.getDuration() ;
+        return "Titre événement : " + this.getTitle() + "Début: " + this.getStart() + "Durée: " + this.getDuration() ;
     }
     
 }
