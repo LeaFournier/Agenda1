@@ -36,4 +36,28 @@ public class Agenda {
         }
         return today;
     }
+
+    public List<Event> findByTitle(String title) {
+        ArrayList titre = new ArrayList();
+        for (Event e : mesEvents) {
+            if (e.getTitle().equals(title)) {
+                titre.add(e);
+            }
+        }
+        return titre;
+    }
+
+    public boolean isFreeFor(Event e) {
+        for (Event evenement : mesEvents) {
+            if ((evenement.getStart().isEqual(e.getStart())
+                    || evenement.getStart().isAfter(e.getStart()) && evenement.getStart().isBefore(e.getStart().plus(e.getDuration())))
+                    || (evenement.getStart().plus(evenement.getDuration()).isAfter(e.getStart()) && evenement.getStart().plus(evenement.getDuration()).isBefore(e.getStart().plus(e.getDuration())))
+                    || evenement.getStart().isEqual(e.getStart())
+                    || evenement.getStart().plus(evenement.getDuration()).isEqual(e.getStart().plus(e.getDuration()))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
